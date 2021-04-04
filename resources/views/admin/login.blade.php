@@ -34,7 +34,7 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <h2>{{Config::get('constants.SITE_NAME')}}</h2>
+                            <h2>{{Config::get('constants.SITE_NAME')}}</>
                             
                             <a href="#">
                                 {{-- <img src="{{asset('admin_assets/images/icon/logo.png')}}" alt="CoolAdmin"> --}}
@@ -60,9 +60,13 @@
                                     </label>
                                 </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                                <div class="social-login-content">
+                               
+                                @if (session('error') !==null)
+                                   <div class="alert alert-danger" role="alert">
                                     {{session('error')}}
-                                </div>
+                                </div>  
+                               @endif
+                                
                             </form>
                             
                         </div>
