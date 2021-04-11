@@ -1,5 +1,6 @@
 @extends('admin/layout')
-
+@section('page_title','Category')
+    
 @section('container')
 <h2 class="mb-2">Category</h2>
 <a href="{{url('admin/category/manage_category')}}"> <button type="button" class="btn btn-primary">

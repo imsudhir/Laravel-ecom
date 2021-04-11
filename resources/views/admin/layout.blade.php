@@ -5,7 +5,7 @@
     <!-- Required meta tags-->
 
     <!-- Title Page-->
-    <title>Dashboard</title>
+    <title>@yield('page_title')</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{asset('admin_assets/css/font-face.css')}}" rel="stylesheet" media="all">
