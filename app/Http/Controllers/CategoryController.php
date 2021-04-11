@@ -15,7 +15,11 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        return view('admin.category');
+        $result['data']=Category::all();
+        // echo "<pre>";
+        // print_r($result['data']);
+        // die;
+        return view('admin.category', $result);
     }
 
     /**
@@ -23,12 +27,59 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function manage_category()
+    public function manage_category(Request $request,$id='')
     {
         //
-        return view('admin.manage_category');
-    }
+        if($id>0){
+             $arr=Category::where(['id'=>$id])->get();
+             $result['category_name']=$arr['0']->category_name;
+             $result['category_slug']=$arr['0']->category_slug;
+             $result['id']=$id;
+ 
+            } else{
+            $result['category_name']='';
+            $result['category_slug']='';
+            $result['id']='';
 
+        }
+//         echo "<pre>";
+//         print_r($result);
+// die();
+        return view('admin.manage_category', $result);
+    }
+    public function manage_category_process(Request $request)
+    {
+        //
+        // return ($request->post());
+        $request->validate([
+            'category_name'=>'required',
+            'category_slug'=>'required|unique:categories,category_slug,'.$request->post('id'),
+        ]);
+        if($request->post('id')>0){
+            $model=new category();
+            $model=Category::find($request->post('id'));
+            $msg="Category Updated Successfuly";
+        }else{
+        $model=new category();
+        $msg="Category Added Successfuly";
+
+        }
+        $model->category_name=$request->post('category_name');
+        $model->category_slug=$request->post('category_slug');
+        $model->save();
+        $request->session()->flash('message',$msg);
+        return redirect('admin/category');
+    }
+    public function delete(Request $request,$id)
+    {
+        //
+        $model=Category::find($id);
+        $model->delete();
+        $request->session()->flash('message','category deleted successfuly');
+        return redirect('admin/category');
+        echo "delete";
+        echo $id;
+    }
     /**
      * Store a newly created resource in storage.
      *

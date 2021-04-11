@@ -2,89 +2,43 @@
 
 @section('container')
 <h2 class="mb-2">Category</h2>
-<a href="manage_category"
-<button type="button" class="btn btn-primary">
+<a href="{{url('admin/category/manage_category')}}"> <button type="button" class="btn btn-primary">
     Add Category</button>
 </a>
     <div class="row mt-3">
+
         <div class="col-lg-12">
+            @if(session('message')!==null)
+            <div class="alert alert-success" role="alert">
+                {{session('message')}}
+            </div>
+            @endif
             <div class="table-responsive table--no-card m-b-30">
                 <table class="table table-borderless table-striped table-earning">
                     <thead>
                         <tr>
-                         
-                            <th>order ID</th>
-                            <th>name</th>
-                            <th class="text-right">price</th>
-                            <th class="text-right">quantity</th>
-                            <th class="text-right">total</th>
+                            <th>Id</th>
+                            <th>category Name</th>
+                            <th class="text-right">Category Slug</th>
+                            <th class="text-right">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($data as $list)
                         <tr>
-                             
-                            <td>100398</td>
-                            <td>iPhone X 64Gb Grey</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$999.00</td>
+                            <td>{{$list->id}}</td>
+                            <td>{{$list->category_name}}</td>
+                            <td>{{$list->category_slug}}</td>
+                            <td>
+                                <a href="{{url('admin/category/delete')}}/{{$list->id}}">
+                                    <button type="button" class="btn btn-danger">Delete</button>    
+                                   </a>
+                                   <a href="{{url('admin/category/manage_category')}}/{{$list->id}}">
+                                    <button type="button" class="btn btn-success">Edit</button>    
+                                   </a>
+                                    </td>
                         </tr>
-                        <tr>
-                             
-                            <td>100397</td>
-                            <td>Samsung S8 Black</td>
-                            <td class="text-right">$756.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$756.00</td>
-                        </tr>
-                        <tr>
-                             
-                            <td>100396</td>
-                            <td>Game Console Controller</td>
-                            <td class="text-right">$22.00</td>
-                            <td class="text-right">2</td>
-                            <td class="text-right">$44.00</td>
-                        </tr>
-                        <tr>
-                            
-                            <td>100395</td>
-                            <td>iPhone X 256Gb Black</td>
-                            <td class="text-right">$1199.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$1199.00</td>
-                        </tr>
-                        <tr>
-                          
-                            <td>100393</td>
-                            <td>USB 3.0 Cable</td>
-                            <td class="text-right">$10.00</td>
-                            <td class="text-right">3</td>
-                            <td class="text-right">$30.00</td>
-                        </tr>
-                        <tr>
-                          
-                            <td>100392</td>
-                            <td>Smartwatch 4.0 LTE Wifi</td>
-                            <td class="text-right">$199.00</td>
-                            <td class="text-right">6</td>
-                            <td class="text-right">$1494.00</td>
-                        </tr>
-                        <tr>
-                           
-                            <td>100391</td>
-                            <td>Camera C430W 4k</td>
-                            <td class="text-right">$699.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$699.00</td>
-                        </tr>
-                        <tr>
-                          
-                            <td>100393</td>
-                            <td>USB 3.0 Cable</td>
-                            <td class="text-right">$10.00</td>
-                            <td class="text-right">3</td>
-                            <td class="text-right">$30.00</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

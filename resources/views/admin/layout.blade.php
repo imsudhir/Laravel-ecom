@@ -49,11 +49,11 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a  href="dashboard">
+                            <a  href="{{url('admin/dashboard')}}">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
-                                    <a href="category">category</a>
+                                    <a href="{{url('admin/category')}}">category</a>
                                 </li>
                                
                                 </li>
@@ -151,12 +151,12 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active-- has-sub">
-                            <a href="dashboard" class="js-arrowp" >
+                            <a href="{{url('admin/dashboard')}}" class="js-arrowp" >
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             
                         </li>
                         <li class="active has-sub">
-                            <a  href="category">
+                            <a  href="{{url('admin/category')}}">
                                 <i class="fas fa-tachometer-alt"></i>Category</a>
                             
                         </li>
@@ -196,7 +196,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="logout">
+                                                <a href="{{url('admin/logout')}}">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
