@@ -1,8 +1,15 @@
 @extends('admin/layout')
 @section('page_title','Manage Category')
+@section('category_selected','active')
 
 @section('container')
-<h2 class="mb-2">Manage Category</h2>
+<h2 class="mb-2">
+@if ($id == '')
+Add Category
+@else 
+Manage Category
+@endif
+</h2>
  <a href="{{url('admin/category')}}" class="btn btn-md btn-info mb-3">Back</a> 
 <div class="row">
     <div class="col-lg-12">

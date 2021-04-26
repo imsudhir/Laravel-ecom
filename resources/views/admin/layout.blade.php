@@ -14,8 +14,7 @@
     <link href="{{asset('admin_assets/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('admin_assets/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('admin_assets/css/theme.css')}}" rel="stylesheet" media="all">
-    
-    <!-- <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+        <!-- <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all"> -->
 
@@ -150,15 +149,18 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active-- has-sub">
+                        <li class="@yield('dashboard_selected')">
                             <a href="{{url('admin/dashboard')}}" class="js-arrowp" >
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             
                         </li>
-                        <li class="active has-sub">
+                        <li class="@yield('category_selected')">
                             <a  href="{{url('admin/category')}}">
-                                <i class="fas fa-tachometer-alt"></i>Category</a>
-                            
+                                <i class="fas fa-list"></i>Category</a>
+                        </li>
+                        <li class="@yield('coupon_selected')">
+                            <a  href="{{url('admin/coupon')}}">
+                                <i class="fas fa-tag"></i>Coupon</a>
                         </li>
                         
                             </ul>
@@ -248,7 +250,9 @@
     <!-- Vendor JS       -->
     </script>
     <script src="{{asset('admin_assets/vendor/wow/wow.min.js')}}"></script>
- 
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"  rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css"  rel="stylesheet">
+
 
     <!-- Main JS-->
     <script src="{{asset('admin_assets/js/main.js')}}"></script>
